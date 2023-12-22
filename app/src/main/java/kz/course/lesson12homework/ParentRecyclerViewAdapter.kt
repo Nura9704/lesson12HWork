@@ -7,9 +7,15 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
-class ParentRecyclerViewAdapter(private val parentItemList: List<ParentItem>) :
+class ParentRecyclerViewAdapter() :
     RecyclerView.Adapter<ParentRecyclerViewAdapter.ParentViewHolder>() {
 
+    private var parentItemList: ArrayList<ParentItem> = ArrayList()
+    fun updateArrayList(parentItemList: ArrayList<ParentItem>) {
+        this.parentItemList.clear()
+        this.parentItemList=parentItemList
+        notifyDataSetChanged()
+    }
     class ParentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val parentTitle: TextView = itemView.findViewById(R.id.parentTitleTextView)
         val childRecyclerView: RecyclerView = itemView.findViewById(R.id.childRecyclerView)
